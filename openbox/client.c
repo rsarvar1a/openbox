@@ -941,7 +941,7 @@ static ObAppSettings *client_get_settings_state(ObClient *self)
                  !g_pattern_match(app->role,
                                   strlen(self->role), self->role, NULL))
             match = FALSE;
-        else if (app->title &&
+        else if (app->title && self->title &&
                  !g_pattern_match(app->title,
                                   strlen(self->title), self->title, NULL))
             match = FALSE;
@@ -1927,7 +1927,7 @@ void client_setup_decor_and_functions(ObClient *self, gboolean reconfig)
            the case any more though !
 
            but do kill the handle on fully maxed windows */
-        self->decorations &= ~(OB_FRAME_DECOR_HANDLE | OB_FRAME_DECOR_GRIPS);
+        // self->decorations &= ~(OB_FRAME_DECOR_HANDLE | OB_FRAME_DECOR_GRIPS | OB_FRAME_DECOR_BORDER);
     }
 
     /* if we don't have a titlebar, then we cannot shade! */
@@ -3529,6 +3529,7 @@ void client_maximize(ObClient *self, gboolean max, gint dir)
     client_change_state(self); /* change the state hints on the client */
 
     client_setup_decor_and_functions(self, FALSE);
+    
     client_move_resize(self, x, y, w, h);
 }
 
