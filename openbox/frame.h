@@ -266,6 +266,7 @@ void frame_flash_stop(ObFrame *self);
   started in the meantime, the callback will never get called. */
 void frame_begin_iconify_animation(ObFrame *self, gboolean iconifying);
 void frame_end_iconify_animation(gpointer data);
+void frame_round_corners(Window window); //prevent implicit declaration of function 'frame_round_corners`
 
 #define frame_iconify_animating(f) (f->iconify_animation_going != 0)
 
